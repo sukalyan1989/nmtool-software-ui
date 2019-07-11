@@ -1,0 +1,35 @@
+<div class="container text-center" style="padding:20px">
+  <h4 class="display-4">Software Information Page</h4>
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Search</span>
+    </div>
+    <input type="text" class="form-control form-control-lg" (keyup)="handleSearchString($event)">
+    <div class="input-group-append">
+        <button class="btn btn-primary btn-lg" (click)="filterSearch()">GO</button>
+      </div>
+  
+  </div>
+<div>
+  
+  <ul>
+    <li class="list-group-item bg-primary"><h2>Software Name</h2></li>
+     <li class="list-group-item" (click)="getMachines(Software)" *ngFor="let Software of SoftwareList">{{Software.SoftwareName}}</li>
+  </ul> 
+ <button [disabled]="skip==0?true:false" class="btn btn-primary" (click)="handlePrevious()">Previous</button>
+ <button [disabled]="SoftwareList.length<10" (click)="handleNext()" class="btn btn-primary">Next</button>
+</div>
+
+<h3 class="display-3">{{SoftwareName}}</h3>
+<table class="table table-primary">
+  <tr>
+    <th>Machine Name</th><th>Version Installed</th>
+  </tr>
+  <tr *ngFor="let mvl of MachineVersionList">
+    <td>{{mvl.ComputerName}}</td>
+    <td>{{mvl.Version}}</td>
+  </tr>
+</table>
+
+
+</div>
